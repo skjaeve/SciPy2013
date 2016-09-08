@@ -45,7 +45,7 @@ nyp = Proj('+datum=NAD83 +lat_0=40.1666666667 +lat_1=40.6666666667 '
            '+x_0=300000 +y_0', preserve_units=True)
 wgs84 = Proj(init='epsg:4326')
 x, y = transform(wgs84, nyp, lon, lat)
-points = MultiPoint(zip(x, y))
+points = MultiPoint(list(zip(x, y)))
 points = MultiPoint([p for p in points.geoms if manhattan.contains(p)])
 pt_arr = np.asarray(points)
 
